@@ -44,18 +44,20 @@ class Hubble (View):
         mmm = month_change(month)
         send_data_to_api = str(ddd) + '-' + mmm
         print(send_data_to_api)
-        url = "https://api.apitalk.ir/hubble-api/info/"
+        url = "https://api.apieco.ir/apitalk/hubble-api/info/"
         payload = {'Date': send_data_to_api}
-        response = requests.request("POST", url, data = payload)
+        files = []
+        headers= {"apieco-key":"your key"}
+        response = requests.request("POST", url, headers=headers, data = payload, files = files)
         return HttpResponse(response.text.encode('utf8'))
 
 
 class information (View):
     def post(self,request):
-        url = "https://api.apitalk.ir/information-gathering/Whois/"
+        url = "https://api.apieco.ir/apitalk/information-gathering/Whois/"
         payload = {'domain': request.POST['domain']}
         files = []           
-        headers= {}
+        headers= {"apieco-key":"your key"}
         response = requests.request("POST", url, headers=headers, data = payload, files = files)
         return HttpResponse(response.text.encode('utf8'))
 
@@ -63,10 +65,10 @@ class information (View):
 
 class language (View):
     def post(self,request):
-        url = "https://api.apitalk.ir/language-detector/"
+        url = "https://api.apieco.ir/apitalk/language-detector/"
         payload = {'Text': request.POST['Text']}
         files = []           
-        headers= {}
+        headers= {"apieco-key":"your key"}
         response = requests.request("POST", url, headers=headers, data = payload, files = files)
         return HttpResponse(response.text.encode('utf8'))
 
@@ -75,10 +77,10 @@ class language (View):
 
 class mean (View):
     def post(self,request):
-        url = "https://api.apitalk.ir/numpy/Mean/"
+        url = "https://api.apieco.ir/apitalk/numpy/Mean/"
         payload = {'List': request.POST['List']}
         files = []
-        headers= {}
+        headers= {"apieco-key":"your key"}
         response = requests.request("POST", url, headers=headers, data = payload, files = files)
         return HttpResponse(response.text.encode('utf8'))
 
@@ -87,10 +89,10 @@ class mean (View):
 
 class median (View):
     def post(self,request):
-        url = "https://api.apitalk.ir/numpy/median/"
+        url = "https://api.apieco.ir/apitalk/numpy/median/"
         payload = {'List': request.POST['List']}
         files = []
-        headers= {}
+        headers= {"apieco-key":"your key"}
         response = requests.request("POST", url, headers=headers, data = payload, files = files)
         return HttpResponse(response.text.encode('utf8'))
 
@@ -98,11 +100,11 @@ class median (View):
 
 class Percentile (View):
     def post(self,request):
-        url = "https://api.apitalk.ir/numpy/percentile/"
+        url = "https://api.apieco.ir/apitalk/numpy/percentile/"
         payload = {'List': request.POST['List'],
         'percentile': request.POST['percentile']}
         files = []
-        headers= {}
+        headers= {"apieco-key":"your key"}
         response = requests.request("POST", url, headers=headers, data = payload, files = files)
         return HttpResponse(response.text.encode('utf8'))
 
@@ -111,10 +113,10 @@ class Percentile (View):
 
 class std (View):
     def post(self,request):
-        url = "https://api.apitalk.ir/numpy/std/"
+        url = "https://api.apieco.ir/apitalk/numpy/std/"
         payload = {'List': request.POST['List']}
         files = []
-        headers= {}
+        headers= {"apieco-key":"your key"}
         response = requests.request("POST", url, headers=headers, data = payload, files = files)
         return HttpResponse(response.text.encode('utf8'))
 
@@ -122,10 +124,10 @@ class std (View):
 
 class TestServerSpeed (View):
     def post(self,request):
-        url = "https://api.apitalk.ir/check-server-speed/GetUrlStatus/"
+        url = "https://api.apieco.ir/apitalk/check-server-speed/GetUrlStatus/"
         payload = {'URL': request.POST['URL']}
         files = []
-        headers= {}
+        headers= {"apieco-key":"your key"}
         response = requests.request("POST", url, headers=headers, data = payload, files = files)
         return HttpResponse(response.text.encode('utf8'))
 
@@ -133,9 +135,9 @@ class TestServerSpeed (View):
 
 class var (View):
     def post(self,request):
-        url = "https://api.apitalk.ir/numpy/var/"
+        url = "https://api.apieco.ir/apitalk/numpy/var/"
         payload = {'List': request.POST['List'] }
         files = []
-        headers= {}
+        headers= {"apieco-key":"your key"}
         response = requests.request("POST", url, headers=headers, data = payload, files = files)
         return HttpResponse(response.text.encode('utf8'))
